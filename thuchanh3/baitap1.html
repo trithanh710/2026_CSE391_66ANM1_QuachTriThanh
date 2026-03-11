@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bài 1.1 + 1.2</title>
+
+<style>
+body{
+    font-family: Arial;
+    margin:40px;
+}
+
+input,select,button{
+    margin:5px;
+    padding:6px;
+}
+
+table{
+    width:100%;
+    border-collapse: collapse;
+    margin-top:15px;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:8px;
+    text-align:center;
+}
+
+th{
+    background:#f2f2f2;
+    cursor:pointer;
+}
+
+.lowScore{
+    background:yellow;
+}
+
+#noResult{
+    color:red;
+    font-weight:bold;
+    text-align:center;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Quản lý điểm sinh viên</h2>
+
+<!-- ====================== -->
+<!-- BÀI 1.1 - THÊM SINH VIÊN -->
+<!-- ====================== -->
+
+<input type="text" id="nameInput" placeholder="Họ tên">
+<input type="number" id="scoreInput" placeholder="Điểm (0-10)">
+<button id="addBtn">Thêm</button>
+
+<br><br>
+
+<!-- ====================== -->
+<!-- BÀI 1.2 - TÌM KIẾM + LỌC -->
+<!-- ====================== -->
+
+<input type="text" id="searchInput" placeholder="Tìm kiếm tên">
+
+<select id="filterSelect">
+<option value="all">Tất cả</option>
+<option value="Giỏi">Giỏi</option>
+<option value="Khá">Khá</option>
+<option value="Trung bình">Trung bình</option>
+<option value="Yếu">Yếu</option>
+</select>
+
+<table>
+
+<thead>
+<tr>
+<th>STT</th>
+<th>Họ tên</th>
+<th id="scoreHeader">Điểm ▲</th>
+<th>Xếp loại</th>
+<th>Thao tác</th>
+</tr>
+</thead>
+
+<tbody id="tableBody"></tbody>
+
+</table>
+
+<p id="noResult" style="display:none">Không có kết quả</p>
+
+<p id="stats"></p>
+
+<script src="baitap1.js"></script>
+
+</body>
+</html>

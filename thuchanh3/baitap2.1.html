@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng Ký Tài Khoản - Bài 2.1</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+        h2 { text-align: center; color: #333; margin-bottom: 25px; }
+        
+        .form-control { margin-bottom: 18px; }
+        .form-control label { display: block; font-weight: 600; margin-bottom: 5px; color: #555; }
+        .form-control input[type="text"], .form-control input[type="password"] {
+            width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 5px; box-sizing: border-box; transition: 0.3s;
+        }
+
+        /* Trạng thái Validation */
+        .form-control.error input { border-color: #e74c3c; }
+        .form-control.success input { border-color: #2ecc71; }
+        
+        .error-msg { color: #e74c3c; font-size: 13px; margin-top: 5px; height: 15px; display: block; visibility: hidden; }
+        .form-control.error .error-msg { visibility: visible; }
+
+        .radio-group { display: flex; gap: 20px; padding: 5px 0; }
+        button { width: 100%; padding: 12px; background: #3498db; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #2980b9; }
+
+        #successBox { text-align: center; display: none; background: #d4edda; color: #155724; padding: 30px; border-radius: 10px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="registerForm">
+            <h2>Đăng Ký</h2>
+            
+            <div class="form-control" id="group-fullname">
+                <label>Họ và tên</label>
+                <input type="text" id="fullname" placeholder="Ít nhất 3 ký tự chữ">
+                <small class="error-msg">Lỗi</small>
+            </div>
+
+            <div class="form-control" id="group-email">
+                <label>Email</label>
+                <input type="text" id="email" placeholder="example@gmail.com">
+                <small class="error-msg">Lỗi</small>
+            </div>
+
+            <div class="form-control" id="group-phone">
+                <label>Số điện thoại</label>
+                <input type="text" id="phone" placeholder="10 số, bắt đầu bằng 0">
+                <small class="error-msg">Lỗi</small>
+            </div>
+
+            <div class="form-control" id="group-password">
+                <label>Mật khẩu</label>
+                <input type="password" id="password" placeholder="8+ ký tự, đủ hoa, thường, số">
+                <small class="error-msg">Lỗi</small>
+            </div>
+
+            <div class="form-control" id="group-confirmPassword">
+                <label>Xác nhận mật khẩu</label>
+                <input type="password" id="confirmPassword">
+                <small class="error-msg">Lỗi</small>
+            </div>
+
+            <div class="form-control">
+                <label>Giới tính</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="Nam"> Nam</label>
+                    <label><input type="radio" name="gender" value="Nữ"> Nữ</label>
+                </div>
+                <small class="error-msg" id="genderError">Vui lòng chọn giới tính</small>
+            </div>
+
+            <div class="form-control">
+                <label style="font-weight: normal;">
+                    <input type="checkbox" id="terms"> Tôi đồng ý với điều khoản
+                </label>
+                <small class="error-msg" id="termsError">Bạn cần đồng ý</small>
+            </div>
+
+            <button type="submit">Đăng Ký Ngay</button>
+        </form>
+
+        <div id="successBox">
+            <h1 style="font-size: 50px;">🎉</h1>
+            <h3>Đăng ký thành công!</h3>
+            <p id="welcomeUser"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
