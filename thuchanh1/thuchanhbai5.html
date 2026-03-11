@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bài tập 05 - HR Management</title>
+  <style>
+    *{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+    body{margin:0;background:#ffffff}
+    .wrap{max-width:980px;margin:24px auto;border:2px solid #2b7cff}
+    .topbar{
+      background:#1f2a33;color:#fff;display:flex;align-items:center;
+      padding:12px 18px;gap:18px
+    }
+    .brand{font-size:20px;font-weight:700}
+    .nav a{color:#cfd6dc;text-decoration:none;margin-right:14px;font-size:14px}
+    .nav a:hover{color:#fff}
+    .search{
+      margin-left:auto;display:flex;gap:10px;align-items:center
+    }
+    .search input{
+      width:220px;padding:8px 10px;border-radius:4px;border:1px solid #88939c;
+      outline:none
+    }
+    .search button{
+      padding:8px 14px;border-radius:4px;border:1px solid #97a3ad;
+      background:transparent;color:#fff;cursor:pointer
+    }
+
+    .content{padding:22px;background:#f6f7f9}
+    .header-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .header-row h2{margin:0;font-size:26px;color:#2c2c2c}
+    .add-btn{
+      margin-left:auto;background:#1877ff;border:none;color:#fff;
+      padding:10px 14px;border-radius:6px;cursor:pointer;font-weight:700
+    }
+
+    .card{
+      background:#fff;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.08);
+      overflow:hidden
+    }
+    table{width:100%;border-collapse:collapse}
+    thead th{
+      text-align:left;padding:12px 14px;background:#ffffff;border-bottom:1px solid #e6e6e6;
+      font-size:14px
+    }
+    tbody td{
+      padding:12px 14px;border-bottom:1px solid #efefef;font-size:14px;color:#222
+    }
+    tbody tr:last-child td{border-bottom:none}
+    .btn{
+      border:none;border-radius:4px;padding:6px 10px;cursor:pointer;font-weight:700;
+      font-size:13px
+    }
+    .btn-edit{background:#f4b400;color:#111;margin-right:8px}
+    .btn-del{background:#e53935;color:#fff}
+    .idcol{width:50px}
+    .actioncol{width:170px}
+
+    /* MODAL */
+    .overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,.25);
+      display:none;align-items:center;justify-content:center;padding:18px
+    }
+    .modal{
+      width:min(560px,100%);background:#fff;border-radius:8px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);overflow:hidden;border:2px solid #2b7cff
+    }
+    .modal-head{
+      background:#1877ff;color:#fff;padding:12px 14px;
+      display:flex;align-items:center
+    }
+    .modal-head b{font-size:16px}
+    .close{
+      margin-left:auto;background:transparent;border:none;color:#fff;
+      font-size:20px;cursor:pointer;line-height:1
+    }
+    .modal-body{padding:14px;background:#fff}
+    .grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:14px
+    }
+    label{display:block;font-size:13px;margin-bottom:6px;color:#333}
+    input[type="text"], input[type="email"], select{
+      width:100%;padding:8px 10px;border:1px solid #d6d6d6;border-radius:5px;outline:none
+    }
+    .row2{grid-column:span 1}
+    .full{grid-column:span 2}
+    .sex{
+      display:flex;gap:18px;align-items:center;margin-top:8px
+    }
+    .modal-foot{
+      padding:12px 14px;display:flex;justify-content:flex-end;gap:10px;background:#fff
+    }
+    .save{background:#1e8e3e;color:#fff}
+    .cancel{background:#6c757d;color:#fff}
+  </style>
+</head>
+<body>
+
+  <div style="max-width:980px;margin:0 auto;padding:10px 0 0;">
+    <div style="background:#bfe6fb;padding:6px 10px;font-weight:800;">
+      Bài tập 5: <span style="font-weight:400;">Xây dựng giao diện web quản lý</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- NAVBAR -->
+    <div class="topbar">
+      <div class="brand">HR Management</div>
+
+      <div class="nav">
+        <a href="#">Home</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="search">
+        <input type="text" placeholder="Search..." />
+        <button type="button">Search</button>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <div class="header-row">
+        <h2>Employee</h2>
+        <button class="add-btn" type="button" id="openModal">+ Add</button>
+      </div>
+
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th class="idcol">ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Position</th>
+              <th class="actioncol">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Fatima Beatriz</td>
+              <td>FatimaBeatriz@gmail.com</td>
+              <td>0985674321</td>
+              <td>Staff</td>
+              <td>
+                <button class="btn btn-edit" type="button">Edit</button>
+                <button class="btn btn-del" type="button">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Gabriel Hanna</td>
+              <td>GabrielHanna@gmail.com</td>
+              <td>0353674231</td>
+              <td>Staff</td>
+              <td>
+                <button class="btn btn-edit" type="button">Edit</button>
+                <button class="btn btn-del" type="button">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Charles Diya</td>
+              <td>CharlesDiya@gmail.com</td>
+              <td>0347658833</td>
+              <td>Staff</td>
+              <td>
+                <button class="btn btn-edit" type="button">Edit</button>
+                <button class="btn btn-del" type="button">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Frank Lamdo</td>
+              <td>FrankLamdo@gmail.com</td>
+              <td>0975444768</td>
+              <td>Manager</td>
+              <td>
+                <button class="btn btn-edit" type="button">Edit</button>
+                <button class="btn btn-del" type="button">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Louis Tom</td>
+              <td>LouisTom@gmail.com</td>
+              <td>0789568223</td>
+              <td>Staff</td>
+              <td>
+                <button class="btn btn-edit" type="button">Edit</button>
+                <button class="btn btn-del" type="button">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="overlay" id="overlay">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <b>New Employee</b>
+        <button class="close" type="button" id="closeModal">×</button>
+      </div>
+
+      <form>
+        <div class="modal-body">
+          <div class="grid">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" type="text" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" type="text" />
+            </div>
+            <div>
+              <label for="pos">Position</label>
+              <select id="pos">
+                <option>-- Select Position --</option>
+                <option>Staff</option>
+                <option>Manager</option>
+                <option>CEO</option>
+              </select>
+            </div>
+
+            <div class="full">
+              <label>Sex</label>
+              <div class="sex">
+                <label><input type="radio" name="sex" /> Male</label>
+                <label><input type="radio" name="sex" /> Female</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <button class="btn save" type="button">Save</button>
+          <button class="btn cancel" type="button" id="cancelModal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById('overlay');
+    const openModal = document.getElementById('openModal');
+    const closeModal = document.getElementById('closeModal');
+    const cancelModal = document.getElementById('cancelModal');
+
+    function show(){ overlay.style.display = 'flex'; }
+    function hide(){ overlay.style.display = 'none'; }
+
+    openModal.addEventListener('click', show);
+    closeModal.addEventListener('click', hide);
+    cancelModal.addEventListener('click', hide);
+
+    // bấm ra ngoài cũng tắt
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) hide();
+    });
+  </script>
+</body>
+</html>

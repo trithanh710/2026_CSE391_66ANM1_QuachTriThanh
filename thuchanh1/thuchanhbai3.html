@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bài tập 03 - HTML Table</title>
+  <style>
+    body { font-family: "Times New Roman", serif; padding: 24px; }
+    h2 { margin: 0 0 12px; }
+    table { border-collapse: collapse; width: 100%; max-width: 980px; }
+    th, td {
+      border: 2px solid #555;
+      padding: 8px 10px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 18px;
+    }
+    th.group { font-weight: 700; }
+    th.small { font-size: 16px; }
+    td.left, th.left { text-align: left; }
+  </style>
+</head>
+<body>
+
+  <h2><b>BÀI TẬP 03:</b> Sử dụng HTML Table, tạo trang web trình bày dữ liệu như mẫu bên dưới</h2>
+
+  <table>
+    <!-- Row 1: Nhóm lớn -->
+    <tr>
+      <th class="group" colspan="2" rowspan="2">Student</th>
+      <th class="group" colspan="4">Exam</th>
+      <th class="group" colspan="4">2nd Exam</th>
+      <th class="group" colspan="2" rowspan="2">Final Grade</th>
+    </tr>
+
+    <!-- Row 2: Nhóm con -->
+    <tr>
+      <th>Q1</th>
+      <th>Q2</th>
+      <th>Q3</th>
+      <th rowspan="2">Grade</th>
+
+      <th>Q1</th>
+      <th>Q2</th>
+      <th>Q3</th>
+      <th rowspan="2">Grade</th>
+    </tr>
+
+    <!-- Row 3: Code/Name + trọng số + NR/R -->
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+
+      <th class="small">8</th>
+      <th class="small">7</th>
+      <th class="small">5</th>
+
+      <th class="small">6</th>
+      <th class="small">7</th>
+      <th class="small">8</th>
+
+      <th>NR</th>
+      <th>R</th>
+    </tr>
+
+    <!-- Data rows -->
+    <tr>
+      <td>80549061</td>
+      <td class="left">John</td>
+
+      <td>70%</td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>17.6</td>
+
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+
+      <td>17.6</td>
+      <td>18</td>
+    </tr>
+
+    <tr>
+      <td>80549062</td>
+      <td class="left">Mary</td>
+
+      <td>10%</td>
+      <td>50%</td>
+      <td>50%</td>
+      <td>6.8</td>
+
+      <td>100%</td>
+      <td>100%</td>
+      <td>50%</td>
+      <td>16.5</td>
+
+      <td>16.5</td>
+      <td>17</td>
+    </tr>
+
+    <tr>
+      <td>80549063</td>
+      <td class="left">Claire</td>
+
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+
+      <td>50%</td>
+      <td>50%</td>
+      <td>50%</td>
+      <td>10.0</td>
+
+      <td>10.0</td>
+      <td>10</td>
+    </tr>
+  </table>
+
+</body>
+</html>
